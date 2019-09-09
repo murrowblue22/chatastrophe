@@ -9,8 +9,27 @@
     <body>
         <img src="assets/img/icon.png" id="test-image" />
         <div id="root"></div>
-        <!--<script src="assets/lib/react.production.min.js"></script>
-        <script src="assets/lib/react-dom.production.min.js"></script>-->
-        <!--<script src="assets/js/bundle.js"></script>-->
+        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#config-web-app -->
+        <script src="../scripts/secrets.js"></script>
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: window.apiKey,
+            authDomain: "chatastrophe-e0c3f.firebaseapp.com",
+            databaseURL: "https://chatastrophe-e0c3f.firebaseio.com",
+            projectId: "chatastrophe-e0c3f",
+            storageBucket: "",
+            messagingSenderId: window.messagingSenderId,
+            appId: "1:735835007746:web:3e323e5753b64f8863301b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        window.firebase = firebase; 
+        </script>
     </body>
 </html>
