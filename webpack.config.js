@@ -13,11 +13,11 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, './public'),
-        filename: 'assets/js/bundle.js'
+        path: path.resolve(__dirname, './build'),
+        filename: 'js/bundle.js'
     },
     devServer: {
-        contentBase: "./public",
+        contentBase: "./build",
         historyApiFallback: true, 
         inline: true,
         hot: true

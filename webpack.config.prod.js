@@ -13,7 +13,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, './build'),
-        filename: 'assets/js/bundle.js',
+        filename: 'js/bundle.js',
         publicPath: './'
     },
     plugins: [

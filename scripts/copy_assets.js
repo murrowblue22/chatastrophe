@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 
-fs.copySync('public', 'build', {
+fs.copySync('src', 'build', {
     dereference: true, 
-    filter: file => file !== 'public/index.html'
+    filter: file => file !== 'src/index.html'
 });

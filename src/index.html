@@ -4,18 +4,21 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CHATASTROPHE</title>
-        <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <img src="assets/img/icon.png" id="test-image" />
+        <img src="img/icon.png" id="test-image" />
         <div id="root"></div>
         
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-firestore.js"></script>
+
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#config-web-app -->
-        <script src="../scripts/secrets.js"></script>
+        <script src="./secrets.js"></script>
         <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {
@@ -29,7 +32,8 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        window.firebase = firebase; 
+        window.firebase = firebase;
+        
         </script>
     </body>
 </html>
