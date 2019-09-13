@@ -12,9 +12,9 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, './build'),
-        filename: 'js/bundle.js',
-        publicPath: './'
+        path: path.resolve(__dirname, 'build'),
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     plugins: [
         new webpack.DefinePlugin({

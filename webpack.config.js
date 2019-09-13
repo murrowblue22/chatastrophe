@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin'); 
 const webpack = require('webpack');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = { 
     entry: {
@@ -13,11 +14,12 @@ module.exports = {
         ]
     },
     output: {
-        path: path.resolve(__dirname, './build'),
-        filename: 'js/bundle.js'
+        path: path.resolve(__dirname, "build"),
+        filename: "bundle.js", 
+        publicPath: "/"
     },
     devServer: {
-        contentBase: "./build",
+        contentBase: "build",
         historyApiFallback: true, 
         inline: true,
         hot: true
@@ -27,7 +29,10 @@ module.exports = {
             filename: 'index.html',
             template: './src/index.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new ManifestPlugin({
+            fileName: 'asset-manifest.json'
+        })
     ],
     module: {
         rules: [

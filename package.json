@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/copy_assets.js && webpack --config webpack.config.prod.js --mode production",
     "deploy": "npm run build && firebase deploy",
-    "start": "webpack-dev-server --mode development",
+    "start": "node scripts/copy_assets.js && webpack-dev-server --mode development",
     "dev": "node scripts/copy_assets.js && webpack --mode development",
     "prod": "node scripts/copy_assets.js && webpack --mode production"
   },
