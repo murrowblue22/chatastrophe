@@ -5,6 +5,7 @@ fs.copySync('src', 'build', {
     filter: file => (
         file !== 'src/index.html' && 
             !(file.includes('src/components')) &&
-                !(file.includes('src/css'))
+            !(file.includes('src/css')) &&
+            !(file.includes('src/js'))
     )
 });

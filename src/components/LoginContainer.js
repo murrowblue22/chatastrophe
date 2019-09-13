@@ -10,7 +10,6 @@ class LoginContainer extends Component {
                     password: '', 
                     error: ''
         };
-        console.log("hey i'm being loaded !!!");
     }
    
     handleEmailChange = (event) => {
