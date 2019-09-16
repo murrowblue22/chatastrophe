@@ -1,10 +1,17 @@
 import React, {Component} from 'react';
 import { Route, withRouter } from 'react-router-dom';
+import * as firebase from 'firebase/app'; 
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/database";
+import "firebase/messaging"; 
 import LoginContainer from './LoginContainer';
 import ChatContainer from './ChatContainer';
 import UserContainer from './UserContainer';
 import NotificationResource from '../resources/NotificationResource';
+import '../secrets';
 import '../css/app.css';
+
 
 
 
@@ -18,6 +25,19 @@ class App extends Component {
             messages: [], 
             messagesLoaded: false
         };
+
+        var firebaseConfig = {
+            apiKey: apiKey,
+            authDomain: "chatastrophe-e0c3f.firebaseapp.com",
+            databaseURL: "https://chatastrophe-e0c3f.firebaseio.com",
+            projectId: "chatastrophe-e0c3f",
+            storageBucket: "",
+            messagingSenderId: messagingSenderId,
+            appId: "1:735835007746:web:3e323e5753b64f8863301b"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
     }
 
     componentDidMount() {

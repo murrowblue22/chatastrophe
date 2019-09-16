@@ -74,10 +74,18 @@ export default class ChatContainer extends Component {
                         <div id="message-container" ref={ element => this.messageContainer = element }>
                         {
                             this.props.messages.map((msg, i) => (
-                                <div key={msg.id} className={`message ${this.props.user.email === msg.author && 'mine'}`}>
-                                    <p>{msg.msg}</p>
-                                    {this.getAuthor(msg, this.props.messages[i + 1])}
-                                </div>
+                               this.props.user.email ? (
+                                    <div key={msg.id} className={`message ${this.props.user.email === msg.author && 'mine'}`}>
+                                        <p>{msg.msg}</p>
+                                        {this.getAuthor(msg, this.props.messages[i + 1])}
+                                    </div>
+                               ) :
+                               (
+                                    <div key={msg.id} className="message">
+                                        <p>{msg.msg}</p>
+                                        {this.getAuthor(msg, this.props.messages[i + 1])}
+                                    </div>
+                               )  
                             ))
                         }
                         </div>

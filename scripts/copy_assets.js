@@ -6,6 +6,7 @@ fs.copySync('src', 'build', {
         file !== 'src/index.html' && 
             !(file.includes('src/components')) &&
             !(file.includes('src/css')) &&
-            !(file.includes('src/js'))
+            !(file.includes('src/js')) &&
+            !(file.includes('src/resources'))
     )
 });

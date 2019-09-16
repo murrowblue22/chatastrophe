@@ -6,6 +6,8 @@ export default class NotificationResource {
         this.tokensLoaded = false; 
         this.database = database;
         this.messaging = messaging;
+        this.user = null; 
+
         try {
             this.messaging
                 .requestPermission()
@@ -22,8 +24,6 @@ export default class NotificationResource {
             this.allTokens = snapshot.val(); 
             this.tokensLoaded = true; 
         })
-        
-
     };
 
     changeUser(user) {
