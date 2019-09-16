@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import AppContainer from './components/AppContainer';
-import App from './js/app';
+//import App from './js/app';
 
 
 ReactDOM.render(
