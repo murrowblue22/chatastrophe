@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Header from './Header';
 
 class LoginContainer extends Component {
@@ -10,6 +11,8 @@ class LoginContainer extends Component {
                     password: '', 
                     error: ''
         };
+
+        this.firebase = this.props.firebaseRef; 
     }
    
     handleEmailChange = (event) => {
@@ -21,7 +24,7 @@ class LoginContainer extends Component {
     };
     
     login() {
-        firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+        this.firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(res => this.onLogin())
             .catch(err => { 
                 if (err.code === 'auth/user-not-found') {
@@ -34,7 +37,7 @@ class LoginContainer extends Component {
     }
 
     signup() {
-        firebase.auth()
+        this.firebase.auth()
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then(res => {
                 this.onLogin();
@@ -77,5 +80,5 @@ class LoginContainer extends Component {
     }
 }
 
-export default LoginContainer; 
+export default withRouter(LoginContainer); 
 

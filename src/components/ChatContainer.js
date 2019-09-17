@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Header from './Header';
+import { timingSafeEqual } from 'crypto';
 
 
 export default class ChatContainer extends Component {
@@ -9,6 +10,9 @@ export default class ChatContainer extends Component {
         super(props); 
 
         this.state = { newMessage: ''};
+        this.firebase = this.props.firebaseRef; 
+
+        this.user = this.firebase.auth().currentUser; 
     }
 
     componentDidMount() {
@@ -29,7 +33,7 @@ export default class ChatContainer extends Component {
     }
 
     handleLogout = () => {
-        firebase.auth().signOut();
+        this.firebase.auth().signOut();
     };
 
     handleInputChange = e => {
@@ -47,6 +51,19 @@ export default class ChatContainer extends Component {
         
         this.props.onSubmit(this.state.newMessage); 
         this.setState({ newMessage: ''});
+    }
+
+    getUser() {
+
+        if (this.props.user !== null) {
+            return this.props.user; 
+        }
+
+        if (this.user !== null) {
+            return this.user; 
+        }
+
+        return null; 
     }
 
     getAuthor = (msg, nextMsg) => {
@@ -74,8 +91,8 @@ export default class ChatContainer extends Component {
                         <div id="message-container" ref={ element => this.messageContainer = element }>
                         {
                             this.props.messages.map((msg, i) => (
-                               this.props.user.email ? (
-                                    <div key={msg.id} className={`message ${this.props.user.email === msg.author && 'mine'}`}>
+                               (this.getUser() !== null) ? (
+                                    <div key={msg.id} className={`message ${this.getUser().email === msg.author && 'mine'}`}>
                                         <p>{msg.msg}</p>
                                         {this.getAuthor(msg, this.props.messages[i + 1])}
                                     </div>

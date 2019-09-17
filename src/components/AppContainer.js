@@ -8,12 +8,9 @@ import "firebase/messaging";
 import LoginContainer from './LoginContainer';
 import ChatContainer from './ChatContainer';
 import UserContainer from './UserContainer';
-import NotificationResource from '../resources/NotificationResource';
+//import NotificationResource from '../resources/NotificationResource';
 import '../secrets';
 import '../css/app.css';
-
-
-
 
 
 class App extends Component {
@@ -41,13 +38,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.notifications = new NotificationResource(firebase.messaging(), firebase.database());
+        //this.notifications = new NotificationResource(firebase.messaging(), firebase.database());
         
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.setState({ user }); 
                 //this.listenForMessages();
-                this.notifications.changeUser(user);
+               // this.notifications.changeUser(user);
             } else {
                 this.props.history.push('/login');
             }
@@ -84,10 +81,18 @@ class App extends Component {
     render() {
         return (
             <div id="container">
-                <Route exact path="/login" component={LoginContainer} />
+                <Route exact path="/login" 
+                    render= { () =>
+                        <LoginContainer 
+                            firebaseRef={firebase}
+                        />
+                    }
+                
+                />
                 <Route exact path="/" 
                     render={ () =>
                          <ChatContainer 
+                            firebaseRef={firebase}
                             messagesLoaded={this.state.messagesLoaded}
                             onSubmit={this.handleSubmitMessage} 
                             user={this.state.user}
